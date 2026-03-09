@@ -1,0 +1,291 @@
+ams projet 1 (S-E06-3003) - Semestre 0: Squelette exemple du cahier des charges | e-uapv2025
+https://e-uapv2025.univ-avignon.fr/mod/page/view.php?id=31530
+
+Passer au contenu principal
+Mes cours
+GA
+Replier
+Généralités
+Annonces officielles
+Forum général
+Fonctionnement de l'ECUE
+Présentation des sujets
+Replier
+Choix du binôme et du sujet
+Rappel de votre parcours
+Constitution des binômes
+Classement des sujets souhaités
+Replier
+SUJET 1 - Interactions vocales humain-robot (F. Lefèvre)
+Forum du Sujet 1
+Dans ce sujet, nous nous intéresserons à la problé...
+Présentation du SUJET 1 "Interactions vocales humain-robot"
+Les interactions vocales humain-machine
+Men_Machine Vocal Interactions - A Movie History
+Atelier - Mise en oeuvre d'un chatbot vocal sur le web (RASA)
+The RASA (video) Masterclass Handbook
+Descriptions
+Sujet d'application "CERIBot", robot d'accueil
+Approfondissement : Apprentissage par renforcement profond pour le dialogue
+Ressources
+Documentations programmation robots Pepper
+Choregraphe Suite (Linux, Windows et Mac)
+SDK PyNAOQi 2.5 (Linux, Mac)
+Exemple de projet Choregraphe : Projet NAO-RASA
+Documentation API EdT Partage CERI
+Replier
+SUJET 2 - Factory de mots de passe (M. Haddad & M. Morchid)
+Forum du SUJET 2
+Atelier initiation à l'IA avant QCM
+Replier
+Sujet - Initiation à l'IA
+Atelier initiation SUJET 2 - Génération de texte
+Code Python pour la Génération de textes (articleGeneration.py)
+Replier
+Données - Génération de texte
+Corpus Shakespeare
+Corpus dumps Wikipedia
+Projet Semestre un
+Projet Semestre deux
+Ressources
+Replier
+Présentations
+Presentation IA pour la prédiction de mots de passe
+Présentation sur la sécurité des mots de passe
+Replier
+Bibliographie
+Bibliographie IA - Réseaux de neurones récurrents (RNN)
+Bibliographie IA - Réseaux de neurones MinimalRNN
+Bibliographie IA - Réseaux de neurones Leaky Unit
+Bibliographie IA - Réseaux de neurones LSTM
+Bibliographie IA - Réseaux de neurones GRU
+Bibliographie sécurité dans les réseaux - A Machine Learning Approach to Predicting Passwords
+Bibliographie sécurité dans les réseaux - Exemple sécurité
+Replier
+Serveur de calcul
+Guide utilisation serveurs
+Slurm
+Étudiants sans binôme
+Replier
+SUJET 3 - Extraction automatique de réseaux de personnages (J.-M. Torres)
+Forum du SUJET 3
+Présentation du SUJET 3
+Corpus Asimov
+Description du SUJET 3: RESEAU DE PERSONNAGES (Kaggle)
+Corpus Asimov Leaderboard
+AMS1 Entités nomées
+Antidictionnaire FR
+Replier
+Évaluation QCMs
+QCM Consignes Tous les documents fournis par les e...
+Bac à sable pour découvrir l'interface QCM
+QCM (20%) - Pour le sujet 1
+QCM (20%) - Pour le sujet 2
+QCM (20%) - Pour le sujet 3
+Replier
+Évaluation cahier des charges, article et code
+Cahier des charges, avancement de réalisation et d...
+Squelette exemple du cahier des charges
+Cahier des charges - S1 Rendu séance 6 (final, noté)
+Article
+Modèle LaTeX à utiliser pour l'article (Interspeech)
+Replier
+Évaluation soutenance orale
+ams projet 1 (S-E06-3003) - Semestre 0
+Évaluation cahier des charges, article et code
+Squelette exemple du cahier des charges
+Squelette exemple du cahier des charges
+Conditions d’achèvement
+
+Squelette de cahier des charges - AMS PROJET M1 Informatique
+
+Cahier des Charges - Projet Informatique avec Tests Utilisateurs
+
+1. Contexte et Objectifs du Projet
+
+1.1. Contexte
+
+Présentez le contexte dans lequel s’inscrit le projet. Expliquez les besoins identifiés, les problèmes actuels à résoudre ou les opportunités à saisir.
+
+Exemple : 
+
+Le projet consiste à développer une application mobile visant à améliorer l’expérience des utilisateurs dans la gestion de leur emploi du temps quotidien. Ce projet est motivé par les retours des utilisateurs actuels des solutions concurrentes.
+
+1.2. Objectifs
+
+- Développer une solution logicielle (application, site web, etc.).
+
+- Améliorer l'expérience utilisateur (UX).
+
+- Tester l'application avec des utilisateurs réels pour valider les choix ergonomiques et fonctionnels.
+
+2. Périmètre du Projet
+
+2.1. Fonctionnalités attendues
+
+Lister les fonctionnalités principales de l'application/logiciel.
+
+Exemple : 
+
+- Gestion de l’agenda.
+
+- Notifications et rappels automatiques.
+
+- Synchronisation avec d'autres outils.
+
+2.2. Technologies utilisées
+
+Indiquer les langages de programmation, frameworks, et autres outils techniques qui seront utilisés.
+
+Exemple : 
+
+- Langage : JavaScript (React), Python (Django), etc.
+
+- Plateformes : iOS et Android.
+
+- Bases de données : PostgreSQL, etc.
+
+3. Public Cible
+
+3.1. Profil des utilisateurs
+
+Décrire les utilisateurs cibles qui testeront l'application. 
+
+Exemple : 
+
+- Âge : 18-45 ans.
+
+- Profession : Étudiants, professionnels.
+
+- Compétences techniques : Faibles à moyennes compétences en informatique.
+
+3.2. Nombre d’utilisateurs pour les tests
+
+Préciser combien de personnes participeront aux tests utilisateurs.
+
+Exemple : 
+
+- Phase 1 : 10 utilisateurs (phase exploratoire).
+
+- Phase 2 : 50 utilisateurs (test grandeur nature).
+
+4. Scénarios de Tests Utilisateurs
+
+4.1. Objectifs des tests utilisateurs
+
+Expliquer les raisons des tests utilisateurs.
+
+Exemple : 
+
+- Valider l’intuitivité de la navigation.
+
+- Tester l'efficacité des fonctionnalités principales.
+
+4.2. Méthodologie de tests
+
+Décrire la manière dont les tests seront conduits.
+
+Exemple : 
+
+- Tests modérés (présence d’un facilitateur).
+
+- Tests non modérés (réalisation des tests à distance par les utilisateurs).
+
+4.3. Scénarios de tests
+
+Détailler les scénarios ou tâches spécifiques que les utilisateurs devront accomplir.
+
+Exemple : 
+
+- Ajouter un événement à l’agenda.
+
+- Configurer une notification.
+
+- Partager un événement avec un autre utilisateur.
+
+5. Critères de Réussite et Évaluations
+
+5.1. Indicateurs de performance (KPI)
+
+Identifier les KPI à suivre pour mesurer la réussite des tests.
+
+Exemple : 
+
+- Taux de réussite des tâches (>90%).
+
+- Temps moyen d’accomplissement des tâches (<2 minutes).
+
+- Satisfaction des utilisateurs (notation >4/5).
+
+5.2. Feedback des utilisateurs
+
+Préciser comment les retours des utilisateurs seront collectés et analysés (questionnaires, interviews, etc.).
+
+6. Contraintes et Risques
+
+6.1. Contraintes techniques
+
+Indiquer les contraintes liées à la technologie, à l’environnement ou à l’équipement utilisé.
+
+Exemple : 
+
+- Compatibilité multi-plateforme (iOS et Android).
+
+- Limitation des ressources serveurs pendant les tests.
+
+6.2. Risques potentiels
+
+Identifier les risques liés à la réalisation du projet.
+
+Exemple : 
+
+- Retards dans le développement des fonctionnalités.
+
+- Problèmes de sécurité ou de confidentialité des données des utilisateurs.
+
+7. Planning Prévisionnel
+
+7.1. Phases du projet
+
+Décrire les différentes phases du projet et leurs durées estimées.
+
+Exemple : 
+
+- Phase de conception : 1 mois.
+
+- Phase de développement : 3 mois.
+
+- Phase de tests utilisateurs : 1 mois.
+
+- Ajustements post-tests : 1 mois.
+
+7.2. Livrables
+
+Listez les livrables attendus à chaque phase.
+
+Exemple : 
+
+- Maquettes (phase de conception).
+
+- Prototype (fin de phase de développement).
+
+- Rapport des tests utilisateurs (fin de phase de tests).
+
+8. Équipe du Projet
+
+Indiquer les membres clés de l’équipe et leur rôle respectif. 
+
+9. Annexes
+
+Inclure toute information complémentaire : 
+
+- Exemple de questionnaire pour les tests utilisateurs.
+
+- Liste des outils de test à utiliser.
+
+ 
+
+Ce squelette peut être adapté pour correspondre précisément aux spécificités du projet et des tests à réaliser.
+ 
+
+Modifié le: dimanche 20 octobre 2024, 19:55

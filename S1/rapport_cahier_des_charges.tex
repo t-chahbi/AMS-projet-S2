@@ -1,0 +1,267 @@
+\documentclass[a4paper]{article}
+\usepackage{INTERSPEECH_v2}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{graphicx}
+
+% Configuration des listings
+\lstset{
+    basicstyle=\fontfamily{cmtt}\selectfont\small,
+    breaklines=true,
+    frame=single,
+    backgroundcolor=\color{gray!10},
+    numbers=none,
+    columns=flexible,
+    keepspaces=true
+}
+
+\title{Cahier des Charges : Projet AMS - Factory de Mots de Passe\\Génération de Texte avec Réseaux de Neurones}
+\name{AMOROS Gaël$^1$, CHAHBI Thaha$^2$}
+\address{Master 1 Informatique, Université d'Avignon}
+\email{gael.amoros@alumni.univ-avignon.fr, thaha.chahbi@alumni.univ-avignon.fr}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Ce projet s'inscrit dans le cadre de l'UE \textbf{AMS Projet 1 (S-E06-3003)} et plus particulièrement du sujet \textit{"Factory de mots de passe"} proposé par M. Haddad et M. Morchid.
+L'objectif global du sujet est d'explorer les techniques d'Intelligence Artificielle, notamment les \textbf{Réseaux de Neurones Récurrents (RNN)}, pour la génération automatique de séquences. Ce travail préparatoire sur la génération de texte (style Shakespeare) servira de base pour la génération ultérieure de mots de passe sécurisés.
+\end{abstract}
+\noindent\textbf{Index Terms}: intelligence artificielle, RNN, LSTM, génération de texte, sécurité
+
+\section{Contexte et objectifs du projet}
+
+\subsection{Contexte}
+Ce projet s'inscrit dans le cadre de l'UE \textbf{AMS Projet 1 (S-E06-3003)} et plus particulièrement du sujet \textit{"Factory de mots de passe"} proposé par M. Haddad et M. Morchid.
+
+L'objectif global du sujet est d'explorer les techniques d'Intelligence Artificielle, notamment les \textbf{Réseaux de Neurones Récurrents (RNN)}, pour la génération automatique de séquences. Ce travail préparatoire sur la génération de texte (style Shakespeare) servira de base pour la génération ultérieure de mots de passe sécurisés.
+
+\subsection{Objectifs}
+Les objectifs de cet atelier d'initiation sont :
+\begin{itemize}
+    \item \textbf{Comprendre} le fonctionnement des réseaux de neurones récurrents (RNN, LSTM, GRU).
+    \item \textbf{Implémenter} et modifier une architecture LSTM pour la génération de texte caractère par caractère.
+    \item \textbf{Optimiser} les performances d'entraînement (vitesse, qualité).
+    \item \textbf{Évaluer} la qualité du texte généré de manière qualitative.
+\end{itemize}
+
+\section{Implémentation et améliorations techniques}
+
+\subsection{Choix de l'architecture LSTM}
+Initialement, le projet fournissait une implémentation basée sur des unités \textbf{GRU} (Gated Recurrent Units). Nous avons choisi de migrer vers une architecture \textbf{LSTM} (Long Short-Term Memory) pour plusieurs raisons critiques liées à la nature séquentielle de notre problème (génération de texte et ultérieurement de mots de passe) :
+
+\begin{itemize}
+    \item \textbf{Gestion de la mémoire à long terme} : Contrairement aux RNN simples qui souffrent du problème de disparition du gradient, les LSTM maintiennent un état de cellule (\textit{cell state}) distinct de l'état caché, permettant de retenir des informations sur des séquences beaucoup plus longues (ex: ouvrir une parenthèse et la fermer 50 caractères plus loin).
+    \item \textbf{Complexité structurelle} : Pour imiter le style de Shakespeare ou générer des mots de passe robustes, le modèle doit capturer des dépendances complexes que le mécanisme de portes (entrée, oubli, sortie) du LSTM gère plus finement que le GRU.
+\end{itemize}
+
+\subsection{Détail des modifications du code}
+Le script original \lstinline|articleGeneration.py| a été refondu en \lstinline|articleGeneration_LSTM.py|. Voici la liste exhaustive des modifications techniques apportées :
+
+\subsubsection{1. Modification de l'architecture (Classe RNN)}
+Architecture du réseau de neurones modifiée pour intégrer LSTM.
+\begin{itemize}
+    \item \textbf{Remplacement de la couche :}\newline
+    \textit{Avant :} \lstinline|self.gru = nn.GRU(hidden_size, hidden_size, n_layers)|\newline
+    \textit{Après :} \lstinline|self.lstm = nn.LSTM(hidden_size, hidden_size, n_layers)|
+    \item \textbf{Gestion de l'état caché (Forward) :}\newline
+    Le LSTM requiert un tuple d'états \lstinline|(hidden, cell)| contrairement au GRU qui n'utilise que \lstinline|hidden|.\newline
+    \lstinline|output, hidden = self.lstm(embedded, hidden)| \\ (où \lstinline|hidden| est maintenant un tuple \lstinline|(h_n, c_n)|).
+    \item \textbf{Initialisation (init\_hidden) :}\newline
+    Ajout de l'initialisation de l'état de cellule \lstinline|c_0| en plus de \lstinline|h_0|.\newline
+    \lstinline|return (h_0, c_0)|
+\end{itemize}
+
+\subsubsection{2. Optimisation de l'entraînement}
+La boucle d'entraînement a été revue pour plus de rigueur et de performance.
+\begin{itemize}
+    \item \textbf{Support Multi-Plateforme (GPU) :}\newline
+    Ajout de la détection automatique du GPU, incluant le support spécifique pour \textbf{Apple Silicon (MPS)} en plus de CUDA (NVIDIA).\newline
+    \lstinline|device = torch.device("mps" if torch.backends.mps.is_available() else ...)|
+    \item \textbf{Sauvegarde du meilleur modèle :}\newline
+    Le script ne sauvegarde plus aveuglément à la fin, mais surveille la \textit{loss}. Si la perte moyenne courante est inférieure à la meilleure observée (\lstinline|best_loss|), le modèle est sauvegardé.\newline
+    \lstinline|if avg_loss < best_loss: torch.save(...)|
+    \item \textbf{Correction de la Backpropagation :}\newline
+    Dans la fonction \lstinline|train|, les appels \lstinline|decoder.zero_grad()|, \lstinline|loss.backward()| et \lstinline|decoder_optimizer.step()| ont été rendus explicites et ordonnés correctement pour chaque batch.
+\end{itemize}
+
+\subsubsection{3. Gestion des Données}
+\begin{itemize}
+    \item \textbf{Indexation explicite :}\newline
+    La fonction \lstinline|random_training_set| utilise maintenant des index explicites pour découper le fichier, évitant des copies mémoire inutiles et assurant que les chunks sont valides.
+    \item \textbf{Priming (Amorce) :}\newline
+    Lors de l'évaluation, le \textit{priming} (l'échauffement de l'état caché avec une chaîne de départ) traite maintenant correctement les dimensions du tenseur via \lstinline|unsqueeze(0)|.
+\end{itemize}
+
+\subsection{Hyperparamètres finaux}
+Suite à nos expérimentations, nous avons arrêté les hyperparamètres suivants pour le modèle final :
+\begin{itemize}
+    \item \textbf{Couches cachées (Layers)} : 3 (Augmenté de 2) pour capturer plus de complexité.
+    \item \textbf{Taille cachée (Hidden Size)} : 256 (Augmenté de 128) pour une meilleure représentation vectorielle.
+    \item \textbf{Époques} : 20 000 (Augmenté de 10 000) pour permettre une convergence plus fine.
+    \item \textbf{Learning Rate} : 0.002 (Fixe).
+\end{itemize}
+
+\section{Public cible}
+
+\subsection{Profil des utilisateurs}
+Le système est destiné à être utilisé par :
+\begin{itemize}
+    \item \textbf{Étudiants} en informatique souhaitant comprendre les RNN.
+    \item \textbf{Chercheurs} explorant la génération de séquences.
+    \item À terme : \textbf{Administrateurs système} pour la génération de mots de passe.
+\end{itemize}
+
+\section{Scénarios de tests}
+
+\subsection{Objectifs des tests}
+Les tests visent à :
+\begin{itemize}
+    \item Valider que le modèle apprend correctement (baisse de la fonction de perte).
+    \item Vérifier la qualité du texte généré (cohérence, style).
+    \item Mesurer les performances (temps d'entraînement, utilisation GPU).
+\end{itemize}
+
+\subsection{Scénarios de tests détaillés}
+\begin{table}[h]
+\caption{Scénarios de tests}
+\label{tab:scenarios}
+\centering
+\begin{tabular}{lll}
+\toprule
+\textbf{Scénario} & \textbf{Description} & \textbf{Critère de Succès} \\
+\midrule
+Test Rapide & 500 époques & Loss < 2.5 \\
+Entrainement Cible & 20 000 époques & Loss < 1.5 \\
+Génération & "KING:" & Structure dialogue \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Critères de réussite et évaluations}
+
+\subsection{Indicateurs de performance (KPI)}
+\begin{table}[h]
+\caption{Indicateurs de Performance}
+\label{tab:kpi}
+\centering
+\begin{tabular}{lcc}
+\toprule
+\textbf{Indicateur} & \textbf{Objectif} & \textbf{Résultat} \\
+\midrule
+Loss finale (Test) & < 3.0 & \textbf{2.30} (OK) \\
+Temps d'exécution & < 1 min & \textbf{10 sec} (OK) \\
+Utilisation GPU & MPS actif & \textbf{Oui} (OK) \\
+Cohérence & Mots reconaissables & \textbf{Partielle} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Exemple de texte généré}
+Voici un exemple de texte généré par le modèle final avec l'amorce "KING HENRY:" :
+
+\begin{lstlisting}
+KING HENRY:
+And that better to me to them,
+And say you bear me: they come to his king,
+As for sparmity that with thee; o'eth these day seize
+Of the first.
+
+CORIOLANUS:
+Come, the moon them is tarry else
+Service, come that that well...
+\end{lstlisting}
+
+\section{Contraintes et risques}
+
+\subsection{Contraintes techniques}
+\begin{itemize}
+    \item \textbf{Matériel} : Nécessite un GPU pour des performances optimales.
+    \item \textbf{Mémoire} : Le modèle occupe environ 6.5 Mo en mémoire.
+    \item \textbf{Données} : Le corpus doit être au format texte brut.
+\end{itemize}
+
+\subsection{Risques identifiés}
+\begin{table}[h]
+\caption{Risques identifiés}
+\label{tab:risques}
+\centering
+\begin{tabular}{lll}
+\toprule
+\textbf{Risque} & \textbf{Probabilité} & \textbf{Mitigation} \\
+\midrule
+Sur-apprentissage & Moyenne & Monitoring loss \\
+Divergence & Faible & Gradient clipping \\
+Temps long & Moyenne & Utilisation GPU \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Perspectives et objectifs futurs}
+
+\subsection{Transition vers la Factory de Mots de Passe}
+L'objectif final de ce projet n'est pas uniquement la génération littéraire, mais la création d'une \textbf{"Factory de mots de passe"}. Ce travail préliminaire sur Shakespeare a permis de valider la capacité du LSTM à apprendre des structures séquentielles complexes.
+
+\subsection{Adaptations nécessaires du modèle}
+Pour passer à la génération de mots de passe, plusieurs évolutions sont prévues :
+\begin{enumerate}
+    \item \textbf{Changement de Corpus} : Remplacer le texte de Shakespeare par des fuites de mots de passe réels (ex: RockYou).
+    \item \textbf{Fine-tuning (Transfer Learning)} : Utiliser le modèle pré-entraîné sur du texte anglais (qui a appris la structure syllabique) et l'affiner sur des mots de passe pour générer des chaînes prononçables mais complexes.
+    \item \textbf{Contraintes de Sécurité} : Modifier la fonction de perte ou la boucle de génération pour favoriser la diversité (entropie) et inclure des caractères spéciaux, chiffres et majuscules.
+\end{enumerate}
+
+
+
+\section{Équipe du projet}
+\begin{table}[h]
+\caption{Équipe du projet}
+\label{tab:equipe}
+\centering
+\begin{tabular}{ll}
+\toprule
+\textbf{Membre} & \textbf{Rôle} \\
+\midrule
+Amoros Gael & Développeur, Rédacteur \\
+Chahbi Thaha & Développeur, Rédacteur \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Annexes}
+
+\subsection{Commandes d'utilisation}
+\textbf{Entraînement :}
+\begin{lstlisting}
+python3 articleGeneration_LSTM.py -d data/shakespeare.txt \
+    --trainEval train --max_epochs 20000
+\end{lstlisting}
+
+\textbf{Génération :}
+\begin{lstlisting}
+python3 articleGeneration_LSTM.py -d data/shakespeare.txt \
+    --trainEval eval --length 500
+\end{lstlisting}
+
+\subsection{Architecture du modèle}
+\begin{itemize}
+    \item \textbf{Embedding} : 100 caractères -> vecteurs de dimension 256.
+    \item \textbf{LSTM} : 3 couches cachées de 256 neurones.
+    \item \textbf{Sortie} : Couche linéaire -> 100 classes (caractères).
+    \item \textbf{Optimiseur} : Adam (lr=0.002).
+    \item \textbf{Loss} : Cross-Entropy.
+\end{itemize}
+
+\subsection{Références bibliographiques}
+\begin{itemize}
+    \item Hochreiter, S., et Schmidhuber, J. (1997). Long Short-Term Memory. \textit{Neural Computation}.
+    \item Cho, K., et al. (2014). Learning Phrase Representations using RNN Encoder-Decoder. \textit{EMNLP}.
+    \item Documentation PyTorch : \href{https://pytorch.org/docs/}{https://pytorch.org/docs/}
+\end{itemize}
+
+\end{document}

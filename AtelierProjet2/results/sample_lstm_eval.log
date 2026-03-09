@@ -1,0 +1,36 @@
+ONLY CPU AVAILABLE
+Corpus split:
+  - Train: 892,315 chars (80%)
+  - Validation: 111,539 chars (10%)
+  - Test: 111,540 chars (10%)
+
+Total corpus: 1,115,394 chars
+Model: LSTM (Layers: 3, Hidden: 512)
+
+------------
+|   EVAL   |
+------------
+
+Enter a starting string:
+
+Generated 250 characters:
+To be, seate amand;
+Heath forteress, not vidir as lath bawial'd.
+Sands,
+Then the cling meof Deetell the and is keeligence to pared.
+3wret, mirebers that-, wheree, part
+Where non
+So surend ale the all thee bedseriting Thist lays beill landor:
+Yet,
+Or then:
+G
+------------
+
+Enter a starting string:
+Traceback (most recent call last):
+  File "/Users/thaha/Documents/cours/M1/AMS-projet-S2/factory-mdp-S1/articleGeneration_LSTM.py", line 480, in <module>
+    evaluating(decoder, args.length)
+  File "/Users/thaha/Documents/cours/M1/AMS-projet-S2/factory-mdp-S1/articleGeneration_LSTM.py", line 379, in evaluating
+    input1 = input()
+             ^^^^^^^
+EOFError: EOF when reading a line

@@ -1,0 +1,21 @@
+Matplotlib created a temporary cache directory at /var/folders/wr/3s6jwj7x0c5_0jj7bnfg14h40000gn/T/matplotlib-tdevu494 because the default path (/Users/thaha/.matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Matplotlib is building the font cache; this may take a moment.
+ONLY CPU AVAILABLE
+600
+bigdoggie
+
+Training file_len = 3234143
+
+--------------------------
+| PASSWORD TEST SUMMARY |
+--------------------------
+Eval set size: 1999
+Samples generated: 5000
+Unique generated: 5000 (100.00%)
+Hit rate (generated in eval): 0.0000%
+Coverage (eval passwords found): 0.0000%
+Unique hits: 0

@@ -1,0 +1,158 @@
+ams projet 1 (S-E06-3003) - Semestre 0: Atelier initiation SUJET 2 - Génération de texte | e-uapv2025
+https://e-uapv2025.univ-avignon.fr/mod/assign/view.php?id=31491
+
+Passer au contenu principal
+Mes cours
+GA
+Replier
+Généralités
+Annonces officielles
+Forum général
+Fonctionnement de l'ECUE
+Présentation des sujets
+Replier
+Choix du binôme et du sujet
+Rappel de votre parcours
+Constitution des binômes
+Classement des sujets souhaités
+Replier
+SUJET 1 - Interactions vocales humain-robot (F. Lefèvre)
+Forum du Sujet 1
+Dans ce sujet, nous nous intéresserons à la problé...
+Présentation du SUJET 1 "Interactions vocales humain-robot"
+Les interactions vocales humain-machine
+Men_Machine Vocal Interactions - A Movie History
+Atelier - Mise en oeuvre d'un chatbot vocal sur le web (RASA)
+The RASA (video) Masterclass Handbook
+Descriptions
+Sujet d'application "CERIBot", robot d'accueil
+Approfondissement : Apprentissage par renforcement profond pour le dialogue
+Ressources
+Documentations programmation robots Pepper
+Choregraphe Suite (Linux, Windows et Mac)
+SDK PyNAOQi 2.5 (Linux, Mac)
+Exemple de projet Choregraphe : Projet NAO-RASA
+Documentation API EdT Partage CERI
+Replier
+SUJET 2 - Factory de mots de passe (M. Haddad & M. Morchid)
+Forum du SUJET 2
+Atelier initiation à l'IA avant QCM
+Replier
+Sujet - Initiation à l'IA
+Atelier initiation SUJET 2 - Génération de texte
+Code Python pour la Génération de textes (articleGeneration.py)
+Replier
+Données - Génération de texte
+Corpus Shakespeare
+Corpus dumps Wikipedia
+Projet Semestre un
+Projet Semestre deux
+Ressources
+Replier
+Présentations
+Presentation IA pour la prédiction de mots de passe
+Présentation sur la sécurité des mots de passe
+Replier
+Bibliographie
+Bibliographie IA - Réseaux de neurones récurrents (RNN)
+Bibliographie IA - Réseaux de neurones MinimalRNN
+Bibliographie IA - Réseaux de neurones Leaky Unit
+Bibliographie IA - Réseaux de neurones LSTM
+Bibliographie IA - Réseaux de neurones GRU
+Bibliographie sécurité dans les réseaux - A Machine Learning Approach to Predicting Passwords
+Bibliographie sécurité dans les réseaux - Exemple sécurité
+Replier
+Serveur de calcul
+Guide utilisation serveurs
+Slurm
+Étudiants sans binôme
+Replier
+SUJET 3 - Extraction automatique de réseaux de personnages (J.-M. Torres)
+Forum du SUJET 3
+Présentation du SUJET 3
+Corpus Asimov
+Description du SUJET 3: RESEAU DE PERSONNAGES (Kaggle)
+Corpus Asimov Leaderboard
+AMS1 Entités nomées
+Antidictionnaire FR
+Replier
+Évaluation QCMs
+QCM Consignes Tous les documents fournis par les e...
+Bac à sable pour découvrir l'interface QCM
+QCM (20%) - Pour le sujet 1
+QCM (20%) - Pour le sujet 2
+QCM (20%) - Pour le sujet 3
+Replier
+Évaluation cahier des charges, article et code
+Cahier des charges, avancement de réalisation et d...
+Squelette exemple du cahier des charges
+Cahier des charges - S1 Rendu séance 6 (final, noté)
+Article
+Modèle LaTeX à utiliser pour l'article (Interspeech)
+Replier
+Évaluation soutenance orale
+ams projet 1 (S-E06-3003) - Semestre 0
+SUJET 2 - Factory de mots de passe (M. Haddad & M. Morchid)
+Sujet - Initiation à l'IA
+Atelier initiation SUJET 2 - Génération de texte
+Atelier initiation SUJET 2 - Génération de texte
+Conditions d’achèvement
+
+Nous vous proposons de produire une factory de textes de Shakespeare, d'articles Wikipedia ou autres, comme une porte d'entrée vers le domaine de l'Intelligence Artificielle pour le traitement de données séquentielles.
+
+Ce premier travail sera ensuite poursuivi lors de l'Application dans le contexte de la production automatique de mots de passe pour la sécurité des systèmes.
+
+Il existe un grand nombre de systèmes IA permettant la génération de séquences, mais nous nous concentrerons sur les réseaux de neurones récurrents (RNN, LSTM, etc.) (voir section "Bibliographie et ressources").
+
+Pour la génération de données séquentielles, il est nécessaire de disposer d'un ensemble de données permettant à l'IA d'apprendre à générer des éléments basiques successifs. Dans le contexte de la génération de textes, les éléments basiques constituant le texte sont les caractères. Ainsi, le modèle d'IA prendra en entrée successivement chacune des lettres (espaces et ponctuations compris) composant le texte et devra prédire le caractère suivant comme vu en cours. Ces éléments basiques (caractères dans notre cas) seront codés puis seront injectés dans le système IA pour prédire le caractère suivant. Dans le cadre de ce TP introductif, il sera alors nécessaire de :
+
+Récupérer et traiter les données
+Apprendre sur ces données (Un modèle RNN vous est fourni)
+Evaluer le système IA lors de la phase de génération de texte.
+
+Ce travail sera réalisé dans un répertoire dédié nommé "AtelierProjet2" sur votre compte (machine GPU).
+
+ 
+
+I) Récupération des données
+
+Dans un premier temps, Vous allez structurer votre travail en créant un répertoire dédié aux données nommé "data" à la racine de votre projet "AtelierProjet2". Dans un terminal, rendez vous dans ce répertoire data pour récupérer les données textuels que vous allez employer. Un fichier shakespeare.txt est disponible sur la plate-forme de cours dans la section "Données atelier initiation - Génération de texte".
+
+Attention. Le fichier d'apprentissage ne doit pas être trop volumineux (< 10Mo).
+
+
+ 
+
+II) Apprentissage
+
+Lancez l'algorithme d'apprentissage contenu dans le fichier ''articleGeneration.py" de la section ''Génération de textes'' sur les données récoltées.
+
+
+Vous disposez des arguments disponibles lors de la phase de génération dans cette même section. Essayez plusieurs configurations de l'IA (RNN) telles que la modification :
+
+de la taille de la couche cachée permettant d'accroître le pouvoir d'abstraction du modèle
+du nombre de couches cachées
+ou du nombre d'itérations nécessaires pour améliorer les résultats observés.
+
+III) Amélioration de l'IA
+
+L'IA que vous avez employé obtient des résultats en termes d'erreurs qu'il est possible d'améliorer (en la réduisant). Pour ce faire, durant cette nouvelle étape, vous avez à modifier le réseau de neurones et notamment le RNN (à l'origine un GRU). L'objectif ici, est de vous informer sur les technologies existantes et de leur implémentation dans un langage de programmation pour l'IA dédié (pytorch).
+
+Parmi les améliorations possible, plusieurs pistes :
+
+modifier le modèle d'IA. La classe contenant l'architecture du RNN est la classe du même nom. Celle-ci est composée entre autres d'un couche appellée GRU (''Gated Recurrent Unit''). Celle-ci peut être remplacée par d'autres cellules, telles que les LSTM
+ajouter des couches cachées, des couches linéaires de normalisation, etc. La document Pytorch contient l'ensemble des classes avec des exemples d'utilisation.
+augmenter la taille du corpus, introduire de la diversité dans le corpus, etc.
+
+Cette étape est essentielle car elle vous permet de vous familiariser avec un écosystème logiciel et opérationnel en IA dans le contexte d'une application réel de génération de contenu.
+
+© Sujet proposé par M. Morchid & M. Haddad
+Ajouter un travail
+Statut de remise
+Statut de remise
+Numéro de tentative	Ceci est la tentative 1.
+Statut des travaux remis	Aucun devoir n’a encore été remis
+Statut de l’évaluation	Non évalué
+Dernière modification	-
+Commentaires	
+Commentaires (0)

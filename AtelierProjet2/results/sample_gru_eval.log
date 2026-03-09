@@ -1,0 +1,28 @@
+Matplotlib created a temporary cache directory at /var/folders/wr/3s6jwj7x0c5_0jj7bnfg14h40000gn/T/matplotlib-unr3wk6u because the default path (/Users/thaha/.matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Matplotlib is building the font cache; this may take a moment.
+ONLY CPU AVAILABLE
+s for you we s
+Training file_len = 1115394
+
+------------
+|   EVAL   |
+------------
+
+Enter a starting two or tree charachters
+
+Generated  250 charcaters: 
+To be, nof wite Ifer a IS ovo bashtrourte wyhi, at ,aso! oitare onr thoe, sas I ores,CBat oes ams os yhe ye ere mou moree ye frafre ashs whoke cind  se murh mond nwese wesin, pufs he mam thite cgackat yo'r tsre biGf toaE mis cyun gatfis thye otase shas oX b
+------------
+
+Enter a starting two or tree charachters
+Traceback (most recent call last):
+  File "/Users/thaha/Documents/cours/M1/AMS-projet-S2/factory-mdp-S1/articleGeneration.py", line 221, in <module>
+    evaluating(decoder, args.length)
+  File "/Users/thaha/Documents/cours/M1/AMS-projet-S2/factory-mdp-S1/articleGeneration.py", line 162, in evaluating
+    input1 = input()
+             ^^^^^^^
+EOFError: EOF when reading a line

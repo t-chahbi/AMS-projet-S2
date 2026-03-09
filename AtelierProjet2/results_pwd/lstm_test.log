@@ -1,0 +1,18 @@
+ONLY CPU AVAILABLE
+Corpus split:
+  - Train: 2,587,314 chars (80%)
+  - Validation: 323,414 chars (10%)
+  - Test: 323,415 chars (10%)
+
+Total corpus: 3,234,143 chars
+Model: LSTM (Layers: 3, Hidden: 256)
+
+--------------------------
+| PASSWORD TEST SUMMARY |
+--------------------------
+Eval set size: 1999
+Samples generated: 5000
+Unique generated: 5000 (100.00%)
+Hit rate (generated in eval): 0.0000%
+Coverage (eval passwords found): 0.0000%
+Unique hits: 0

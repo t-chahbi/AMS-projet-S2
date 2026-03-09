@@ -1,0 +1,35 @@
+ONLY CPU AVAILABLE
+Corpus split:
+  - Train: 892,315 chars (80%)
+  - Validation: 111,539 chars (10%)
+  - Test: 111,540 chars (10%)
+
+Total corpus: 1,115,394 chars
+Model: LSTM (Layers: 3, Hidden: 256)
+
+-----------
+|  TRAIN  |
+-----------
+
+[0m 3s (100 10%) Train Loss: 3.4145]
+[0m 7s (200 20%) Train Loss: 3.2384]
+[0m 11s (300 30%) Train Loss: 2.8884]
+[0m 15s (400 40%) Train Loss: 2.5142]
+[0m 18s (500 50%) Train Loss: 2.3915]
+  [Validation] Loss: 2.3653 | Perplexité: 10.65
+  -> Meilleur modèle sauvegardé! (Val Loss: 2.3653)
+[0m 22s (600 60%) Train Loss: 2.3252]
+[0m 26s (700 70%) Train Loss: 2.2612]
+[0m 30s (800 80%) Train Loss: 2.2322]
+[0m 34s (900 90%) Train Loss: 2.2289]
+[0m 37s (1000 100%) Train Loss: 2.1562]
+  [Validation] Loss: 2.1667 | Perplexité: 8.73
+  -> Meilleur modèle sauvegardé! (Val Loss: 2.1667)
+
+------------
+|   TEST   |
+------------
+Test Loss: 2.1763
+Test Perplexité: 8.81
+
+Training Complete. Best model saved to lstmImproved_3_256.pt

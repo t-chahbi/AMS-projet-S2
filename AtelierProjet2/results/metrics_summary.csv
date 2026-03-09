@@ -1,0 +1,6 @@
+model,arch,final_avg_loss,val_loss,test_loss,test_perplexity
+gru_h128_l2_e300,GRU,2.8655,NA,NA,NA
+gru_h256_l3_e600,GRU,3.001,NA,NA,NA
+gru_h512_l3_e800,GRU,3.5989,NA,NA,NA
+lstm_h256_l3_e1000,LSTM,NA,2.1667,2.1763,8.81
+lstm_h512_l3_e1000,LSTM,NA,2.0915,2.0778,7.99
